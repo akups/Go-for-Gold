@@ -2,12 +2,27 @@ class Player {
   constructor() {
     this.col = 0;
     this.row = 0;
-    this.playerImages;
-    this.currentDirection = "down";
+    this.currentDirection = "right";
+  }
+  loadAssets() {
+    this.playerImages = {
+      down: loadImage("images/miner-down.png"),
+      up: loadImage("images/miner-up.png"),
+      right: loadImage("images/miner-right.png"),
+      left: loadImage("images/miner-left.png")
+    };
   }
 
   draw() {
-    image(this.playerImages, this.row, this.col, 150, 100);
+    if (this.currentDirection === "right") {
+      image(this.playerImages.right, this.row, this.col, 75, 50);
+    } else if (this.currentDirection === "down") {
+      image(this.playerImages.down, this.row, this.col, 75, 50);
+    } else if (this.currentDirection === "left") {
+      image(this.playerImages.left, this.row, this.col, 75, 50);
+    } else if (this.currentDirection === "up") {
+      image(this.playerImages.up, this.row, this.col, 75, 50);
+    }
   }
 
   moveDown(stepVert) {

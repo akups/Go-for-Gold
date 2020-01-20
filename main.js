@@ -15,7 +15,7 @@ function preload() {
     console.log("ele", ele);
     ele.loadAssets();
   });
-  game.player.playerImages = loadImage("images/miner.png");
+  game.player.loadAssets();
   game.mineShaft.forEach(ele => {
     ele.loadAssets();
   });
