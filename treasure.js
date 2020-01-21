@@ -11,6 +11,10 @@ class Treasure {
   randomPosition() {
     this.col = Math.floor(Math.random() * 6) * 100;
     this.row = Math.floor(Math.random() * 6) * 150;
+    return {
+      col: this.col,
+      row: this.row
+    };
   }
 
   drawTreasure() {

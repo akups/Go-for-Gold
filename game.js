@@ -4,25 +4,49 @@ class Game {
     this.treasure = [];
     this.mineShaft = [];
     this.dirt = [];
+    this.occuppiedPositions = [];
     this.background = new Background();
+    this.points = 0;
   }
 
   addTreasure() {
     for (let i = 0; i < 10; i += 1) {
       this.treasure.push(new Treasure());
     }
+
     this.treasure.forEach(ele => {
-      ele.randomPosition();
+      let randomPositions = ele.randomPosition();
+      while (
+        randomPositions ===
+        this.occuppiedPositions.filter(ele => {
+          return ele.x === randomPositions.x && ele.y === randomPositions.y;
+        })
+      ) {
+        randomPositions = ele.randomPosition();
+      }
+      this.occuppiedPositions.push(randomPositions);
     });
+    console.log(this.occuppiedPositions);
   }
 
   addDirt() {
-    for (let i = 0; i < 7; i += 1) {
+    console.log(this.occuppiedPositions);
+    for (let i = 0; i < 20; i += 1) {
       this.dirt.push(new Dirt());
     }
     this.dirt.forEach(ele => {
-      ele.randomPosition();
+      let randomPositions = ele.randomPosition();
+      while (
+        randomPositions ===
+        this.occuppiedPositions.filter(ele => {
+          return ele.x === randomPositions.x && ele.y === randomPositions.y;
+        })
+      ) {
+        randomPositions = ele.randomPosition();
+      }
+      this.occuppiedPositions.push(randomPositions);
     });
+    console.log(this.occuppiedPositions);
   }
 
   addMineShaft() {

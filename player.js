@@ -1,3 +1,5 @@
+let counter = 0;
+
 class Player {
   constructor() {
     this.col = 0;
@@ -63,6 +65,42 @@ class Player {
   } // Increase by 1 the value of player.row
 
   dig() {
-    if (this.row === treasure.row && this.col === treasure.col);
+    for (let i = 0; i < game.treasure.length; i += 1) {
+      if (
+        this.row === game.treasure[i].row &&
+        this.col === game.treasure[i].col
+      ) {
+        console.log("found gold");
+        game.points += 50;
+        counter += 50;
+        //play.goldSound();
+        return;
+      }
+    }
+    for (let i = 0; i < game.dirt.length; i += 1) {
+      if (this.row === game.dirt[i].row && this.col === game.dirt[i].col) {
+        console.log("found dirt");
+        game.points -= 10;
+        counter -= 10;
+        // play.dirtSound();
+        return;
+      }
+    }
+
+    for (let i = 0; i < game.mineShaft.length; i += 1) {
+      if (
+        this.row === game.mineShaft[i].row &&
+        this.col === game.mineShaft[i].col
+      ) {
+        console.log("falls in shaft");
+        game.points = 0;
+        counter = 0;
+        console.log(`Game OVER YOU LOSS`);
+        //play.loseSound();
+        return;
+      }
+    }
+
+    console.log(`Try Again`);
   }
 }
