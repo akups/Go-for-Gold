@@ -5,6 +5,7 @@ class Mineshaft {
   }
   loadAssets() {
     this.mineShaftImage = loadImage("images/mineshaft.png");
+    this.sound = loadSound("sounds/Woosh-Deep-01.mp3");
   }
 
   randomPosition() {

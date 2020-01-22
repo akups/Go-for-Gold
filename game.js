@@ -1,3 +1,7 @@
+// #1 property called isGameEnded ==> false/true
+// #2 Set isGameEnded = true ==> when falling into mineshaft? when time runs out?
+// #3 create function called drawFinishScreen()
+
 class Game {
   constructor() {
     this.player = new Player(0, 0); // (0,0) = Initial position (col, row)
@@ -6,7 +10,9 @@ class Game {
     this.dirt = [];
     this.occuppiedPositions = [];
     this.background = new Background();
-    this.points = 0;
+    this.score = 0;
+    this.gameEnded = false;
+    this.timer = 0;
   }
 
   addTreasure() {
@@ -84,5 +90,16 @@ class Game {
         line(0, y, width, y);
       }
     }
+  }
+  gameEnds() {
+    if (this.gameEnded === true || this.timer == 14400) {
+      return true;
+    }
+  }
+
+  drawEndScreen() {
+    this.row = 0;
+    this.col = 0;
+    image(this.image, this.row, this.col, 900, 600);
   }
 }

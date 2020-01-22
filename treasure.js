@@ -6,6 +6,7 @@ class Treasure {
   }
   loadAssets() {
     this.treasureImage = loadImage("images/treasure_gold.png");
+    this.sound = loadSound("sounds/applause4.mp3");
   }
 
   randomPosition() {

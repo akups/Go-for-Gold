@@ -4,8 +4,6 @@ const HEIGHT = WIDTH * 1.5;
 
 const game = new Game();
 
-//const dirt = new Dirt();
-
 function preload() {
   console.log("preload");
   game.addTreasure();
@@ -23,6 +21,7 @@ function preload() {
     ele.loadAssets();
   });
   game.background.loadAssets();
+  game.image = loadImage("images/game-over.jpg");
 }
 
 function keyPressed() {
@@ -48,6 +47,7 @@ function keyPressed() {
 function setup() {
   let canvas = createCanvas(HEIGHT, WIDTH);
   canvas.parent("canvas");
+  game.background.sound.play();
 }
 
 function draw() {
@@ -55,6 +55,10 @@ function draw() {
   //background("white");
   //For (var BEGIN; END; INTERVAL){
   //DO SOMETHING }
+  if (game.gameEnds() === true) {
+    return game.drawEndScreen();
+  }
+
   game.drawGrid();
 
   game.treasure.forEach(ele => {
@@ -69,7 +73,13 @@ function draw() {
   if (frameCount > 240) {
     game.background.drawBackground();
   }
+  game.timer++;
+
   game.player.draw();
+
+  textSize(32); // size
+  fill("black"); //color ${}
+  text(`Miner: ${game.score.toFixed(2)}`, width - width / 1.1, 30); //
   // console.log(game.points);
   //player.checkCollision();
 } // Increase by 1 the value of player.row

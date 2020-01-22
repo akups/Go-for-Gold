@@ -6,6 +6,7 @@ class Player {
     this.row = 0;
     this.currentDirection = "right";
   }
+
   loadAssets() {
     this.playerImages = {
       down: loadImage("images/miner-down.png"),
@@ -71,18 +72,18 @@ class Player {
         this.col === game.treasure[i].col
       ) {
         console.log("found gold");
-        game.points += 50;
-        counter += 50;
-        //play.goldSound();
+        game.score += 50;
+
+        game.treasure[i].sound.play();
         return;
       }
     }
     for (let i = 0; i < game.dirt.length; i += 1) {
       if (this.row === game.dirt[i].row && this.col === game.dirt[i].col) {
         console.log("found dirt");
-        game.points -= 10;
+        game.score -= 10;
         counter -= 10;
-        // play.dirtSound();
+        game.dirt[i].sound.play();
         return;
       }
     }
@@ -93,14 +94,14 @@ class Player {
         this.col === game.mineShaft[i].col
       ) {
         console.log("falls in shaft");
-        game.points = 0;
-        counter = 0;
+        game.score = 0;
+
         console.log(`Game OVER YOU LOSS`);
-        //play.loseSound();
+        game.mineShaft[i].sound.play();
+        game.gameEnded = true;
         return;
       }
     }
-
     console.log(`Try Again`);
   }
 }

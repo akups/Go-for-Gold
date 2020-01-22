@@ -5,6 +5,7 @@ class Dirt {
   }
   loadAssets() {
     this.dirtImage = loadImage("images/dirt.png");
+    this.sound = loadSound("sounds/SciFi-02.mp3");
   }
 
   randomPosition() {
