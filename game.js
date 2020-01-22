@@ -16,37 +16,39 @@ class Game {
 
     this.treasure.forEach(ele => {
       let randomPositions = ele.randomPosition();
+
       while (
-        randomPositions ===
-        this.occuppiedPositions.filter(ele => {
-          return ele.x === randomPositions.x && ele.y === randomPositions.y;
+        this.occuppiedPositions.find(ele => {
+          ele.row === randomPositions.row && ele.col === randomPositions.col;
         })
       ) {
         randomPositions = ele.randomPosition();
       }
       this.occuppiedPositions.push(randomPositions);
     });
-    console.log(this.occuppiedPositions);
   }
 
   addDirt() {
-    console.log(this.occuppiedPositions);
-    for (let i = 0; i < 20; i += 1) {
+    for (let i = 0; i < 7; i += 1) {
       this.dirt.push(new Dirt());
     }
     this.dirt.forEach(ele => {
       let randomPositions = ele.randomPosition();
+
       while (
-        randomPositions ===
-        this.occuppiedPositions.filter(ele => {
-          return ele.x === randomPositions.x && ele.y === randomPositions.y;
+        this.occuppiedPositions.find(ele => {
+          if (
+            ele.row === randomPositions.row &&
+            ele.col === randomPositions.col
+          ) {
+            return true;
+          }
         })
       ) {
         randomPositions = ele.randomPosition();
       }
       this.occuppiedPositions.push(randomPositions);
     });
-    console.log(this.occuppiedPositions);
   }
 
   addMineShaft() {
@@ -54,7 +56,21 @@ class Game {
       this.mineShaft.push(new Mineshaft());
     }
     this.mineShaft.forEach(ele => {
-      ele.randomPosition();
+      let randomPositions = ele.randomPosition();
+
+      while (
+        this.occuppiedPositions.find(ele => {
+          if (
+            ele.row === randomPositions.row &&
+            ele.col === randomPositions.col
+          ) {
+            return true;
+          }
+        })
+      ) {
+        randomPositions = ele.randomPosition();
+      }
+      this.occuppiedPositions.push(randomPositions);
     });
   }
 

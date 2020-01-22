@@ -10,7 +10,7 @@ function preload() {
   console.log("preload");
   game.addTreasure();
   game.addDirt();
-  //game.addMineShaft();
+  game.addMineShaft();
   game.treasure.forEach(ele => {
     console.log("ele", ele);
     ele.loadAssets();
@@ -66,7 +66,7 @@ function draw() {
   game.dirt.forEach(ele => {
     ele.drawDirt();
   });
-  if (frameCount > 600) {
+  if (frameCount > 240) {
     game.background.drawBackground();
   }
   game.player.draw();
