@@ -92,7 +92,7 @@ class Game {
     }
   }
   gameEnds() {
-    if (this.gameEnded === true || this.timer == 14400) {
+    if (this.gameEnded === true || this.timer == 900) {
       return true;
     }
   }
@@ -101,5 +101,8 @@ class Game {
     this.row = 0;
     this.col = 0;
     image(this.image, this.row, this.col, 900, 600);
+    textSize(32); // size
+    fill("gold"); //color ${}
+    text(`Score: ${game.score}`, 400, 50);
   }
 }

@@ -71,15 +71,18 @@ class Player {
         this.row === game.treasure[i].row &&
         this.col === game.treasure[i].col
       ) {
+        game.treasure.splice(i, 1);
         console.log("found gold");
         game.score += 50;
 
         game.treasure[i].sound.play();
+        game.treasure;
         return;
       }
     }
     for (let i = 0; i < game.dirt.length; i += 1) {
       if (this.row === game.dirt[i].row && this.col === game.dirt[i].col) {
+        game.dirt.splice(i, 1);
         console.log("found dirt");
         game.score -= 10;
         counter -= 10;

@@ -70,7 +70,7 @@ function draw() {
   game.dirt.forEach(ele => {
     ele.drawDirt();
   });
-  if (frameCount > 240) {
+  if (frameCount > 600) {
     game.background.drawBackground();
   }
   game.timer++;
@@ -78,8 +78,12 @@ function draw() {
   game.player.draw();
 
   textSize(32); // size
-  fill("black"); //color ${}
-  text(`Miner: ${game.score.toFixed(2)}`, width - width / 1.1, 30); //
+  fill("gold"); //color ${}
+  text(`Score: ${game.score}`, 400, 50); //
+
+  textSize(32); // size
+  fill("gold"); //color ${}
+  text(`Timer: ${game.timer}`, 0, 600); //
   // console.log(game.points);
   //player.checkCollision();
 } // Increase by 1 the value of player.row
