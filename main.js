@@ -86,7 +86,7 @@ function draw() {
   game.dirt.forEach(ele => {
     ele.drawDirt();
   });
-  if (frameCount > 300) {
+  if (frameCount > 240) {
     game.background.drawBackground();
   }
 
