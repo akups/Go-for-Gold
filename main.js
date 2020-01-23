@@ -73,7 +73,10 @@ function draw() {
   if (frameCount > 240) {
     game.background.drawBackground();
   }
-  game.timer++;
+
+  if (frameCount % 60 === 0) {
+    game.timer++;
+  }
 
   game.player.draw();
 

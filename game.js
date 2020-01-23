@@ -92,7 +92,7 @@ class Game {
     }
   }
   gameEnds() {
-    if (this.gameEnded === true || this.timer == 9000) {
+    if (this.gameEnded === true || this.timer == 45 * 60) {
       return true;
     }
   }
