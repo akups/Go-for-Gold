@@ -13,6 +13,7 @@ class Game {
     this.score = 0;
     this.gameEnded = false;
     this.timer = 0;
+    this.gameStart = false;
   }
 
   addTreasure() {
@@ -97,14 +98,24 @@ class Game {
     }
   }
 
+  drawBeginScreen() {
+    this.row1 = 0;
+    this.col1 = 0;
+    image(this.image1, this.row1, this.col1, 900, 600);
+    startButton.position(750, 730);
+    startButton.style("font-size", "25px");
+    startButton.style("background-color", "saddlebrown");
+    startButton.show();
+  }
+
   drawEndScreen() {
     this.row = 0;
     this.col = 0;
     image(this.image, this.row, this.col, 900, 600);
-    button.show();
-    button.position(750, 730);
-    button.style("font-size", "25px");
-    button.style("background-color", "saddlebrown");
+    restartButton.show();
+    restartButton.position(750, 730);
+    restartButton.style("font-size", "25px");
+    restartButton.style("background-color", "saddlebrown");
     textSize(32); // size
     fill("gold"); //color ${}
     text(`Score: ${game.score}`, 400, 50);

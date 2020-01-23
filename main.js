@@ -22,6 +22,7 @@ function preload() {
   });
   game.background.loadAssets();
   game.image = loadImage("images/game-over.jpg");
+  game.image1 = loadImage("images/go_for_gold.jpg");
 }
 
 function keyPressed() {
@@ -31,6 +32,7 @@ function keyPressed() {
   }
   const stepVert = 100;
   const stepHor = 150;
+
   if (keyCode === 37) {
     // left arrow
     game.player.moveLeft(stepHor);
@@ -48,9 +50,12 @@ function setup() {
   let canvas = createCanvas(HEIGHT, WIDTH);
   canvas.parent("canvas");
   game.background.sound.play();
-  button = createButton("Restart");
-  button.hide();
-  button.mousePressed(reloadPage);
+  restartButton = createButton("Restart");
+  restartButton.hide();
+  restartButton.mousePressed(reloadPage);
+  startButton = createButton("Start");
+  startButton.hide();
+  startButton.mousePressed(startGame);
 }
 
 function draw() {
@@ -60,6 +65,13 @@ function draw() {
   //DO SOMETHING }
   if (game.gameEnds() === true) {
     return game.drawEndScreen();
+  }
+
+  if (game.gameStart === false) {
+    game.drawBeginScreen();
+    //draw the start screen
+    //(the start screen will need to have a button, that when clicked sets gamestart to true)
+    return;
   }
 
   game.drawGrid();
@@ -73,7 +85,7 @@ function draw() {
   game.dirt.forEach(ele => {
     ele.drawDirt();
   });
-  if (frameCount > 240) {
+  if (frameCount > 300) {
     game.background.drawBackground();
   }
 
@@ -94,4 +106,10 @@ function draw() {
 
 function reloadPage() {
   document.location.reload();
+}
+
+function startGame() {
+  frameCount = 0;
+  game.gameStart = true;
+  startButton.hide();
 }
