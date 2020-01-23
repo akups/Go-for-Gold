@@ -2,5 +2,11 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: aqua;
+  background-color: goldenrod;
+}
+
+h1 {
+  font-family: fantasy;
+  font-size: 45px;
+  color: saddlebrown;
 }

@@ -48,6 +48,9 @@ function setup() {
   let canvas = createCanvas(HEIGHT, WIDTH);
   canvas.parent("canvas");
   game.background.sound.play();
+  button = createButton("Restart");
+  button.hide();
+  button.mousePressed(reloadPage);
 }
 
 function draw() {
@@ -87,6 +90,8 @@ function draw() {
   textSize(32); // size
   fill("gold"); //color ${}
   text(`Timer: ${game.timer}`, 0, 600); //
-  // console.log(game.points);
-  //player.checkCollision();
-} // Increase by 1 the value of player.row
+}
+
+function reloadPage() {
+  document.location.reload();
+}
