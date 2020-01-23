@@ -49,7 +49,6 @@ function keyPressed() {
 function setup() {
   let canvas = createCanvas(HEIGHT, WIDTH);
   canvas.parent("canvas");
-  game.background.sound.play();
   restartButton = createButton("Restart");
   restartButton.hide();
   restartButton.mousePressed(reloadPage);
@@ -73,6 +72,8 @@ function draw() {
     //(the start screen will need to have a button, that when clicked sets gamestart to true)
     return;
   }
+
+  if (!game.background.sound.isPlaying()) game.background.sound.loop();
 
   game.drawGrid();
 
