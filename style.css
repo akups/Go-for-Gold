@@ -9,8 +9,5 @@ h1 {
   font-family: fantasy;
   font-size: 45px;
   color: saddlebrown;
-}
-
-#canvas {
-  margin-bottom: 0.5px;
+  padding-bottom: 0.2px;
 }

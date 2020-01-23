@@ -102,7 +102,8 @@ class Game {
     this.row1 = 0;
     this.col1 = 0;
     image(this.image1, this.row1, this.col1, 900, 600);
-    startButton.position(750, 730);
+    startButton.position(0, 730);
+    startButton.center("horizontal");
     startButton.style("font-size", "25px");
     startButton.style("background-color", "saddlebrown");
     startButton.show();
