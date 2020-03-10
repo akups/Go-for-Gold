@@ -55,6 +55,10 @@ function setup() {
   startButton = createButton("Start");
   startButton.hide();
   startButton.mousePressed(startGame);
+  // instructionsButton.createButton(
+  //   "Instructions: use arrows to move up down right and left and use space to dig"
+  // );
+  // instructionsButton.hide();
 }
 
 function draw() {
@@ -113,4 +117,5 @@ function startGame() {
   frameCount = 0;
   game.gameStart = true;
   startButton.hide();
+  // instructionsButton.hide();
 }
